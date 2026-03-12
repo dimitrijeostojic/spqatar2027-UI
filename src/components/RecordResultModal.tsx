@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { ForfeitSide } from '../types';
+import {  } from '../types/entities/entities';
 import { matchesApi } from '../api';
 import { Button, ErrorMsg, FormField, Input, Modal } from './common';
+import { ForfeitSide } from '../types/enums/enums';
 
 interface MatchDto {
     publicId: string;

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Group } from '../types';
+import { Group } from '../types/entities/entities';
 import { groupsApi } from '../api';
 import { Spinner, ErrorMsg, Button, EmptyState } from '../components/common';
 import GroupCard from '../components/GroupCard';
@@ -32,7 +32,6 @@ export function GroupsPage() {
     try {
       const gs = await groupsApi.getAll();
       setGroups(gs);
-
       const results = await Promise.allSettled(gs.map(g => groupsApi.getStandings(g.publicId)));
       const map: Record<string, StandingRow[]> = {};
       results.forEach((r, i) => {

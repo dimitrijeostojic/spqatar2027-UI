@@ -1,6 +1,7 @@
 import React from 'react'
 import { Badge, Button, Td } from './common';
-import { ForfeitSide } from '../types';
+import {  } from '../types/entities/entities';
+import { ForfeitSide } from '../types/enums/enums';
 
 interface MatchDto {
     publicId: string;
@@ -16,9 +17,9 @@ interface MatchDto {
 }
 
 function StatusBadge({ status }: { status: number }) {
-    if (status === 2) return <Badge color="green">Završena</Badge>;
-    if (status === 3) return <Badge color="red">Otkazana</Badge>;
-    return <Badge color="blue">Zakazana</Badge>;
+    if (status === 2) return <Badge color="green">Completed</Badge>;
+    if (status === 3) return <Badge color="red">Cancelled</Badge>;
+    return <Badge color="blue">Scheduled</Badge>;
 }
 
 const MatchRow = ({ match, onResult, onForfeit }: { match: MatchDto; onResult: () => void; onForfeit: () => void }) => {

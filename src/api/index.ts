@@ -1,10 +1,9 @@
 import {
   Group, Team, Stadium, Match, GroupStandings,
-  CreateGroupRequest, UpdateGroupRequest,
-  CreateTeamRequest, UpdateTeamRequest,
-  CreateMatchRequest, RecordResultRequest, ForfeitMatchRequest,
-  GetMatchesQuery
-} from '../types';
+} from '../types/entities/entities';
+import { CreateGroupRequest, UpdateGroupRequest } from '../types/requests/group';
+import { CreateMatchRequest, ForfeitMatchRequest, GetAllMatchesRequest, RecordMatchResultRequest } from '../types/requests/match';
+import { CreateTeamRequest, UpdateTeamRequest } from '../types/requests/team';
 import keycloak from './keycloak';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'https://localhost:7001';
@@ -98,16 +97,14 @@ export const stadiumsApi = {
 
 // --- Matches ---
 export const matchesApi = {
-  getAll: (query?: GetMatchesQuery) => {
+  getAll: (query?: GetAllMatchesRequest) => {
     const params = new URLSearchParams();
     if (query?.groupPublicId) params.set('groupPublicId', query.groupPublicId);
-    if (query?.teamPublicId) params.set('teamPublicId', query.teamPublicId);
-    if (query?.status) params.set('status', query.status);
     const qs = params.toString();
     return request<Match[]>(`/api/match${qs ? `?${qs}` : ''}`);
   },
   create: (body: CreateMatchRequest) => request<Match>('/api/match', { method: 'POST', body: JSON.stringify(body) }),
-  recordResult: (publicId: string, body: RecordResultRequest) =>
+  recordResult: (publicId: string, body: RecordMatchResultRequest) =>
     request<Match>(`/api/match/${publicId}/result`, { method: 'PUT', body: JSON.stringify(body) }),
   forfeit: (publicId: string, body: ForfeitMatchRequest) =>
     request<Match>(`/api/match/${publicId}/forfeit`, { method: 'PUT', body: JSON.stringify(body) }),

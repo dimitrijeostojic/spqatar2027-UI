@@ -1,5 +1,5 @@
 import React from 'react'
-import { Group } from '../types';
+import { Group } from '../types/entities/entities';
 import { Button } from './common';
 import StandingsTable from './StandingsTable';
 

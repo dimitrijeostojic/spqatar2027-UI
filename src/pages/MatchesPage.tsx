@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Team, Stadium, Group, ForfeitSide } from '../types';
+import { Team, Stadium, Group, ForfeitSide } from '../types/entities/entities';
 import { matchesApi, teamsApi, stadiumsApi, groupsApi } from '../api';
 import { Spinner, ErrorMsg, Button, Select, Table, Th, EmptyState } from '../components/common';
 import MatchRow from '../components/MatchRow';
@@ -37,7 +37,7 @@ export function MatchesPage() {
     setLoading(true);
     try {
       const [m, t, s, g] = await Promise.all([
-        matchesApi.getAll({ groupPublicId: filterGroup || undefined, status: (filterStatus as any) || undefined }),
+        matchesApi.getAll({ groupPublicId: filterGroup || undefined}),
         teamsApi.getAll(),
         stadiumsApi.getAll(),
         groupsApi.getAll(),

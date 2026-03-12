@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Stadium } from '../types';
+import { Stadium } from '../types/entities/entities';
 import { stadiumsApi } from '../api';
 import { Spinner, ErrorMsg, EmptyState, Badge } from '../components/common';
 

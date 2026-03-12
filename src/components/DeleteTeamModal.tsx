@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Team } from '../types';
+import { Team } from '../types/entities/entities';
 import { teamsApi } from '../api';
 import { Button, ErrorMsg, Modal } from './common';
 

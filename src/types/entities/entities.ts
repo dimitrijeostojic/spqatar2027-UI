@@ -1,3 +1,5 @@
+import { ForfeitSide, MatchStatus } from "../enums/enums";
+
 export interface Entity {
   id: number;
   publicId: string;
@@ -19,10 +21,8 @@ export interface Stadium extends Entity {
   stadiumName: string;
   city: string;
   capacity: number;
+  matches?: Match[];
 }
-
-export type MatchStatus = 'Scheduled' | 'Completed' | 'Cancelled';
-export type ForfeitSide = 'Home' | 'Away';
 
 export interface Match extends Entity {
   homeTeamId: number;
@@ -56,48 +56,4 @@ export interface GroupStandings {
   groupId: string;
   groupName: string;
   standings: TeamStanding[];
-}
-
-// Request types
-export interface CreateGroupRequest {
-  groupName: string;
-}
-
-export interface UpdateGroupRequest {
-  publicId: string;
-  name: string;
-}
-
-export interface CreateTeamRequest {
-  teamName: string;
-  flagIcon?: string;
-  groupPublicId: string;
-}
-
-export interface UpdateTeamRequest {
-  teamName?: string;
-  flagIcon?: string;
-  groupPublicId?: string;
-}
-
-export interface CreateMatchRequest {
-  homeTeamPublicId: string;
-  awayTeamPublicId: string;
-  startTime: string;
-  stadiumPublicId: string;
-}
-
-export interface RecordResultRequest {
-  homePoints: number;
-  awayPoints: number;
-}
-
-export interface ForfeitMatchRequest {
-  forfeitLoser: ForfeitSide;
-}
-
-export interface GetMatchesQuery {
-  groupPublicId?: string;
-  teamPublicId?: string;
-  status?: MatchStatus;
 }

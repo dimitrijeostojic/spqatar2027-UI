@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Group, Stadium, Team } from '../types';
+import { Group, Stadium, Team } from '../types/entities/entities';
 import { matchesApi } from '../api';
 import { Button, ErrorMsg, FormField, Input, Modal, Select } from './common';
 

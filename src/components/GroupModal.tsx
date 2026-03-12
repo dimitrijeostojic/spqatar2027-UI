@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Group } from '../types';
+import { Group } from '../types/entities/entities';
 import { groupsApi } from '../api';
 import { Button, ErrorMsg, FormField, Input, Modal } from './common';
 

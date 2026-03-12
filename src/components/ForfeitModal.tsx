@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { ForfeitSide } from '../types';
+import {  } from '../types/entities/entities';
 import { matchesApi } from '../api';
 import { Button, ErrorMsg, FormField, Modal, Select } from './common';
+import { ForfeitSide } from '../types/enums/enums';
 
 interface MatchDto {
     publicId: string;
@@ -17,7 +18,7 @@ interface MatchDto {
 }
 
 const ForfeitModal = ({ match, onClose, onSaved }: { match: MatchDto; onClose: () => void; onSaved: () => void }) => {
-    const [loser, setLoser] = useState<ForfeitSide>('Home');
+    const [loser, setLoser] = useState<ForfeitSide>(0 as ForfeitSide);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -37,10 +38,10 @@ const ForfeitModal = ({ match, onClose, onSaved }: { match: MatchDto; onClose: (
         <Modal title="Predaja meča" onClose={onClose} width={400}>
             {error && <ErrorMsg message={error} />}
             <FormField label="Koji tim predaje meč?">
-                <Select value={loser} onChange={e => setLoser(e.target.value as ForfeitSide)}>
-                    <option value="Home">{match.homeTeam} (domaćin)</option>
-                    <option value="Away">{match.awayTeam} (gost)</option>
-                </Select>
+               <Select value={loser} onChange={e => setLoser(Number(e.target.value) as ForfeitSide)}>
+  <option value={1}>{match.homeTeam} (domaćin)</option>
+  <option value={2}>{match.awayTeam} (gost)</option>
+</Select>
             </FormField>
             <div style={{ background: 'var(--sand)', border: '1px solid var(--sand-dark)', borderRadius: 4, padding: '.75rem 1rem', fontSize: '.78rem', color: 'var(--ink-soft)', marginBottom: '1rem' }}>
                 Pobednik automatski dobija 20 poena, gubitnik 0 poena.

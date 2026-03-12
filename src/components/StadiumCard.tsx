@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stadium } from '../types';
+import { Stadium } from '../types/entities/entities';
 import { Badge } from './common';
 
 const StadiumCard = ({ stadium }: { stadium: Stadium }) => {

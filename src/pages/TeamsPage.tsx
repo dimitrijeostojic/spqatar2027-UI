@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Team, Group } from '../types';
+import { Team, Group } from '../types/entities/entities';
 import { teamsApi, groupsApi } from '../api';
 import { Spinner, ErrorMsg, Button, Table, Th, Td, EmptyState, Badge } from '../components/common';
 import DeleteTeamModal from '../components/DeleteTeamModal';

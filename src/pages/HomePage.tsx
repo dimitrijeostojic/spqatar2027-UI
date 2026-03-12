@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Stadium, Team } from "../types";
+import { Stadium, Team } from "../types/entities/entities";
 import { stadiumsApi, teamsApi } from "../api";
 import { Spinner, ErrorMsg } from "../components/common";
 import StadiumCard from "../components/StadiumCard";
@@ -12,25 +12,15 @@ export function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    stadiumsApi.getAll()
-      .then(data => {
-        const arr = Array.isArray(data) ? data : (data as any).items ?? [];
-        setStadiums(arr);
-      })
-      .catch(() => setError("Greška pri učitavanju stadiona."))
-      .finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    teamsApi.getAll()
-      .then(data => {
-        const arr = Array.isArray(data) ? data : (data as any).items ?? [];
-        setTeams(arr);
-      })
-      .catch(() => setError("Greška pri učitavanju timova."))
-      .finally(() => setLoading(false));
-  }, []);
+useEffect(() => {
+  Promise.all([stadiumsApi.getAll(), teamsApi.getAll()])
+    .then(([stadiumData, teamData]) => {
+      setStadiums(Array.isArray(stadiumData) ? stadiumData : (stadiumData as any).items ?? []);
+      setTeams(Array.isArray(teamData) ? teamData : (teamData as any).items ?? []);
+    })
+    .catch(() => setError("Greška pri učitavanju podataka."))
+    .finally(() => setLoading(false));
+}, []);
 
   return (
     <div className="fade-in">
