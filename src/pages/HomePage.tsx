@@ -27,7 +27,7 @@ useEffect(() => {
       <div style={{ background: "linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 60%, #a02030 100%)", padding: "3rem 2.5rem", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(45deg, rgba(201,150,42,.06) 0, rgba(201,150,42,.06) 1px, transparent 0, transparent 50%)", backgroundSize: "28px 28px" }} />
         <div style={{ position: "relative" }}>
-          <p style={{ fontSize: ".65rem", letterSpacing: ".22em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "0.75rem" }}>FIFA World Cup</p>
+          <p style={{ fontSize: ".65rem", letterSpacing: ".22em", textTransform: "uppercase", color: "var(--gold-light)", marginBottom: "0.75rem" }}>FIBA World Cup</p>
           <h1 style={{ fontFamily: "Playfair Display, serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "var(--sand-light)", lineHeight: 1.05 }}>Qatar 2027</h1>
           <div style={{ width: 60, height: 3, background: "var(--gold)", margin: "1rem 0" }} />
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", marginTop: "1.5rem" }}>
@@ -49,7 +49,7 @@ useEffect(() => {
         {error && <ErrorMsg message={error} />}
 
         {!loading && !error && (
-          stadiums.length === 0
+          stadiums.length === 0 
             ? <p style={{ color: "var(--muted)", fontSize: ".85rem" }}>Nema evidentiranih stadiona.</p>
             : <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
               {stadiums.map(s => <StadiumCard key={s.publicId} stadium={s} />)}

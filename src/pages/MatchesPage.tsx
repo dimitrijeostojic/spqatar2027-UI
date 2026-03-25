@@ -1,11 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Team, Stadium, Group, ForfeitSide } from '../types/entities/entities';
+import { Team, Stadium, Group,  } from '../types/entities/entities';
 import { matchesApi, teamsApi, stadiumsApi, groupsApi } from '../api';
 import { Spinner, ErrorMsg, Button, Select, Table, Th, EmptyState } from '../components/common';
 import MatchRow from '../components/MatchRow';
 import ScheduleMatchModal from '../components/ScheduleMatchModal';
 import RecordResultModal from '../components/RecordResultModal';
 import ForfeitModal from '../components/ForfeitModal';
+import { ForfeitSide } from '../types/enums/enums';
 
 interface MatchDto {
   publicId: string;

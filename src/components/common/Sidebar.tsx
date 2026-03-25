@@ -21,7 +21,7 @@ export function Sidebar() {
     }}>
       {/* Logo */}
       <div style={{ padding: '1.75rem 1.5rem 1.25rem', borderBottom: '1px solid rgba(245,230,200,.1)' }}>
-        <div style={{ fontSize: '.65rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--gold-light)', marginBottom: 6 }}>FIFA</div>
+        <div style={{ fontSize: '.65rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--gold-light)', marginBottom: 6 }}>FIBA</div>
         <div style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.4rem', color: 'var(--sand-light)', lineHeight: 1.1 }}>Qatar<br />2027</div>
         <div style={{ width: 32, height: 2, background: 'var(--gold)', marginTop: 8 }} />
       </div>
